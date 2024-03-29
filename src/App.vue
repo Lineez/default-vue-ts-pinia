@@ -2,13 +2,8 @@
   <default-layer />
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import DefaultLayer from "@/layers/DefaultLayer.vue";
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  components: { DefaultLayer },
-});
 </script>
 
 <style lang="scss">

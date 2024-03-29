@@ -12,6 +12,7 @@
     "axios": "^0.27.2",
     "pinia": "^2.0.14",
     "register-service-worker": "^1.7.2",
+    "thirdweb": "^5.0.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
@@ -31,6 +32,6 @@
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
-    "typescript": "~4.5.5"
+    "typescript": "^5.4.3"
   }
 }
