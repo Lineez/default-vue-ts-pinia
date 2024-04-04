@@ -1,26 +1,53 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomePage from "@/pages/HomePage.vue";
+
+import useLoaderState from "@/store/modules/loader";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomePage,
+    component: () => import("@/pages/HomePage.vue"),
   },
   {
     path: "/about",
     name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "@/pages/AboutPage.vue"),
+    component: () => import("@/pages/AboutPage.vue"),
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to) => {
+  const isLoading = useLoaderState();
+  const { changeStateTrue } = isLoading;
+  changeStateTrue();
+
+  // const token = getToken();
+  // // не залогинен
+  // if (!token && to.name !== "Login") {
+  //   return { name: "Login" };
+  // }
+  // // залогинен, но зашел на форму логина или повторно вошел, до того как токен протух
+  // else if (token && to.name === "Login") {
+  //   return { name: "Menu" };
+  // }
+  // // остальные маршруты
+  // else {
+  //   return true;
+  // }
+});
+
+router.afterEach(() => {
+  const isLoading = useLoaderState();
+  const { changeStateFalse } = isLoading;
+  // Небольшая задержка, чтобы избежать мерцания при мгновенном переходе между роутами
+  const t = setTimeout(() => {
+    changeStateFalse();
+    clearTimeout(t);
+  }, 500);
 });
 
 export default router;

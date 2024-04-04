@@ -1,16 +1,12 @@
 <template>
   <header>
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <RouterLink to="/">Home</RouterLink> |
+      <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({});
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss"></style>

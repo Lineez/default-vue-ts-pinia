@@ -1,17 +1,11 @@
-import { createApp } from "vue";
 import { createPinia } from "pinia";
-import App from "./App.vue";
-import "./registerServiceWorker";
-import directives from "@/directives/index";
+import { createApp } from "vue";
+
+import App from "@/App.vue";
 import router from "@/router/index";
 
 // APP
 const app = createApp(App);
-
-// register global directives
-directives.forEach((directive) => {
-  app.directive(directive.name, directive);
-});
 
 // STORE
 const pinia = createPinia();
