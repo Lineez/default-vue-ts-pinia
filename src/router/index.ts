@@ -20,7 +20,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to) => {
+router.beforeEach(() => {
   const isLoading = useLoaderState();
   const { changeStateTrue } = isLoading;
   changeStateTrue();
